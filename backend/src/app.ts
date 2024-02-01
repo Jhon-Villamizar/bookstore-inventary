@@ -3,6 +3,7 @@ import cors from 'cors';
 import { BookRoutes } from './interfaces/routes/book.routes';
 
 const app = express();
+app.use(express.json());
 app.use(cors());
 app.use('/api', BookRoutes());
 
