@@ -1,20 +1,20 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const initialState = {
-  id: "",
+  id: 0,
   title: "",
   author: "",
-  price: "",
-  stockQuantity: "",
-}
+  price: 0,
+  stockQuantity: 0,
+};
 const useFormData = () => {
   const [formData, setFromData] = useState(initialState);
 
   const resetData = () => {
     setFromData(initialState);
-  }
+  };
 
-  return {formData, setFromData, resetData}
-}
+  return { formData, setFromData, resetData };
+};
 
 export default useFormData;

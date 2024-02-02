@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:4000/api';
+import { Book } from "../types/book";
+
+const API_URL = "http://localhost:4000/api";
 
 const BookService = {
   listBooks: async () => {
@@ -7,11 +9,11 @@ const BookService = {
     return books;
   },
 
-  createBooks: async (book: any) => {
+  createBooks: async (book: Book) => {
     const response = await fetch(`${API_URL}/createBook`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(book),
     });
@@ -19,13 +21,13 @@ const BookService = {
     return newBook;
   },
 
-  updateBook: async ({id, title, author, price, stockQuantity}: any) => {
+  updateBook: async ({ id, title, author, price, stockQuantity }: Book) => {
     const response = await fetch(`${API_URL}/updateBook/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({title, author, price, stockQuantity}),
+      body: JSON.stringify({ title, author, price, stockQuantity }),
     });
     const newBook = await response.json();
     return newBook;
@@ -33,9 +35,9 @@ const BookService = {
 
   deleteBook: async (id: number) => {
     await fetch(`${API_URL}/deleteBook/${id}`, {
-      method: 'DELETE',
-    })
-  }
-}
+      method: "DELETE",
+    });
+  },
+};
 
 export default BookService;
